@@ -21,10 +21,13 @@ from datetime import datetime
 import chef
 import json
 
-chef_url = "http://38.113.206.18:4000"
-chef_key = "/opt/stack/horizon/openstack_dashboard/dashboards/inventory/chef/horizon.pem"
-chef_usr = "horizon"
-#chef_cfg = ""
+import openstack_dashboard.local.local_settings as local_settings
+
+
+chef_url = local_settings.INVENTORY_CHEF_URL
+chef_key = local_settings.INVENTORY_CHEF_KEY
+chef_usr = local_settings.INVENTORY_CHEF_USER
+
 
 class ChefNode:
 

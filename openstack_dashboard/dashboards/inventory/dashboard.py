@@ -25,3 +25,4 @@ class Inventory(horizon.Dashboard):
 
 
 horizon.register(Inventory)
+

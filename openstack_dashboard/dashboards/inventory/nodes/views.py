@@ -19,8 +19,12 @@ from openstack_dashboard.dashboards.inventory.nodes.tables import NodesTable
 
 import brew.maas
 
-maas_key = "Cfh7E8DMG5KFcGfWB2:XbusEZ8R6hpmZaqqN7:ucs9eBd8TPLJusDMNb6NEmLxh2WjBqDR"
-maas_url = "http://38.113.206.18/MAAS/api/1.0"
+import openstack_dashboard.local.local_settings as local_settings
+
+
+maas_key = local_settings.INVENTORY_MAAS_KEY
+maas_url = local_settings.INVENTORY_MAAS_URL
+
 
 class Node:
 
