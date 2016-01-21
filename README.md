@@ -18,10 +18,16 @@ Directories under `openstack_dashboard/dashboards` are actual dashboards impleme
 Files should be respectively placed under OpenStack Horizon root `openstack_dashboards` directory.
 
 `openstack_dashboard/local/local_settings.py` must provide following configuration options:
+
+
 Inventory/Chef options:
+
 - INVENTORY_CHEF_URL
 - INVENTORY_CHEF_KEY
 - INVENTORY_CHEF_USER
-- Inventory/Nodes options:
+
+
+Inventory/Nodes options:
+
 - INVENTORY_MAAS_KEY
 - INVENTORY_MAAS_URL
