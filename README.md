@@ -31,3 +31,20 @@ Inventory/Nodes options:
 
 - INVENTORY_MAAS_KEY
 - INVENTORY_MAAS_URL
+
+## Installation
+
+0. `$ pip install PyChef`
+1. `$ git clone git@github.com:nephoscale/horizon-plugins.git`
+2. `$ cd horizon-plugins`
+3. `$ sudo cp -R openstack_dashboard/dashboards/* ${HORIZON_ROOT}/openstack_dashboard/dashboards/``
+4. `$ sudo cp -R openstack_dashboard/enabled/* ${HORIZON_ROOT}/openstack_dashboard/enabled/`
+5. Edit `${HORIZON_ROOT}/openstack_dashboard/local/local_settings.py` and add/edit required config options.
+
+Notes:
+1. If you see `OSError: libcrypto.so: cannot open shared object file: No such file or directory` in apache logs, 
+   just `ln -s` `libcrypto.so.1.0.0` into system lib directory and restart apache. For example, on Ubuntu 14.04 x64 do:
+   ```
+   $ sudo ln -s /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /lib/x86_64-linux-gnu/libcrypto.so
+   $ sudo service apache2 restart 
+   ```
