@@ -22,6 +22,7 @@ class Inventory(horizon.Dashboard):
     name = _("Inventory")
     slug = "inventory"
     default_panel = 'chef'
+    permissions = ('openstack.roles.admin')
 
 
 horizon.register(Inventory)
