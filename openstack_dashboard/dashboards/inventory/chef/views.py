@@ -34,6 +34,13 @@ chef_url = local_settings.INVENTORY_CHEF_URL
 chef_key = local_settings.INVENTORY_CHEF_KEY
 chef_usr = local_settings.INVENTORY_CHEF_USER
 
+def toDict(node):
+    if isinstance(node, chef.node.NodeAttributes):
+        n = {}
+        for k, v in node.iteritems():
+            n[k] =toDict(v)
+        return n
+    return node
 
 class ChefNode:
 
@@ -45,7 +52,7 @@ class ChefNode:
         self.uptime = uptime
         self.lstchk = lstchk
         self.roles = roles
-        self.attrs = attrs
+        self.attrs = json.dumps(toDict(attrs), indent=4)
 
 
 def initChefNode(node):
