@@ -13,10 +13,11 @@
 from django.conf.urls import patterns
 from django.conf.urls import url
 
-from openstack_dashboard.dashboards.inventory.chef.views import IndexView
+from openstack_dashboard.dashboards.inventory.chef.views import IndexView, DetailView
 
 
 urlpatterns = patterns(
     '',
+    url(r'^(?P<id>[^/]+)/detail/$', DetailView.as_view(), name='detail'),
     url(r'^$', IndexView.as_view(), name='index'),
 )

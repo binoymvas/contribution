@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<h3>{% trans "Node Overview" %}</h3>
+
+<div class="info detail">
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    {% for key, val in node.attrs.iteritems %}
+    <dt>{{ key }}</dt>
+    <dd>{{ val }}</dd>
+    {% endfor %}
+  </dl>
+</div>
+
