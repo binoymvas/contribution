@@ -1,0 +1,65 @@
+{% load i18n sizeformat %}
+<h3>{% trans "Invoice Detail View" %}</h3>
+<div class="col-sm-12 row detail">
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+	{% if invoice.name %}
+            <dt>{% trans "Tenant Name" %}</dt>
+            <dd>{{ invoice.name|default:_("None") }}</dd>
+            <dt>{% trans "Tenant ID" %}</dt>
+            <dd>{{ invoice.tenant_id }}</dd>
+            <dt>{% trans "Invoice ID" %}</dt>
+            <dd>{{ invoice.id|default:_("None") }}</dd>
+            <dt>{% trans "Paid Cost" %}</dt>
+            <dd>${{ invoice.paid_cost }}</dd>
+            <dt>{% trans "Balance Cost" %}</dt>
+            <dd>${{ invoice.balance_cost }}</dd>
+            <dt>{% trans "Total Cost" %}</dt>
+            <dd>${{ invoice.total_cost }}</dd>
+            <dt>{% trans "Payment Status" %}</dt>
+            <dd>{{ invoice.payment_status}}</dd>
+            <dt>{% trans "Invoice Date" %}</dt>
+            <dd>{{ invoice.invoice_date }}</dd> 
+            <dt>{% trans "Invoice Period From" %}</dt>
+            <dd>{{ invoice.invoice_period_from }}</dd>
+            <dt>{% trans "Invoice Period To" %}</dt>
+            <dd>{{ invoice.invoice_period_to }}</dd>
+	{% else %}
+	    <dt>No details found</dt>
+	{% endif %}
+    </dl>
+</div>
+<table class="table table-bordered table-striped" id="invoice">
+    <thead>
+        <tr class="table_caption">
+            <th colspan="6" class="table_header" data-column="0">
+                <h3 class="table_title">Price Splitup</h3>
+                <div class="table_actions clearfix"></div>
+            </th>
+        </tr>
+        <tr class="tablesorter-headerRow">
+            <th class="normal_column">Cost for entity</th>
+            <th class="normal_column">Instance Id</th>
+            <th class="normal_column">Instance Name</th>
+            <th class="normal_column">Instance Size</th>
+            <th class="normal_column">Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+	{% if price_value %} 
+            {% for price in price_value %}
+            <tr class="{% cycle 'odd' 'even' %}">
+                <td class="normal_column">{{price.entity_name}}</td>
+                <td class="normal_column">{{price.instance_id}}</td>
+                <td class="normal_column">{{price.instance_name}}</td>
+                <td class="normal_column">{{price.instance_size}}</td>
+                <td class="normal_column">${{price.cost}}</td>
+            </tr>
+            {% endfor %}
+	{% else %}
+	    <tr class="{% cycle 'odd' 'even' %}">
+		<td colspan="5">No Invoice Details Found</td>
+	    </tr>
+	{% endif %}
+    </tbody>
+</table>
